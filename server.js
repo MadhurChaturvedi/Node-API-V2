@@ -21,7 +21,7 @@ app.use(cors(corsOptions))
 app.use('/api/products', productRoute)
 
 // ConnectDB
-mongoose.set("strictQuery", false)
+// mongoose.set("strictQuery", false)
 mongoose.connect(process.env.DB)
     .then(() => {
         console.log('DB Connected')
