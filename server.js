@@ -2,14 +2,21 @@ const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const productRoute = require('./routes/productroute.js')
-const {errorMiddleware} = require('./middleware/error.Middleware.js')
+const { errorMiddleware } = require('./middleware/error.Middleware.js')
 
 require('dotenv').config()
 
 const app = express()
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
-app.use(cors())
+
+const frontend = process.env.FRONTEND_URL
+console.log(frontend);
+var corsOptions = {
+    origin: frontend,
+    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+}
+app.use(cors(corsOptions))
 
 app.use('/api/products', productRoute)
 
