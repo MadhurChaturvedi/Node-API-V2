@@ -10,7 +10,7 @@ const app = express()
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 
-const frontend = process.env.FRONTEND_URL
+const frontend = 'https://node-api-v2-fronet-end.vercel.app'
 console.log(frontend);
 var corsOptions = {
     origin: frontend,
