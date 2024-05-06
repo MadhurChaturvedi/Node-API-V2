@@ -2,16 +2,15 @@ const Product = require('../model/productModel.js')
 const asyncHandler = require('express-async-handlr')
 
 // get All Product
-const getAllProducts = asyncHandler(async (req, res) => {
+const getAllProducts = async (req, res) => {
     try {
         const products = await Product.find({})
         res.status(200).json(products)
     }
     catch (err) {
-        res.status(500)
-        throw new Error(err.message)
+        res.status(500).json({ msg: "Failed" })
     }
-})
+}
 
 // get single Product by ID
 const getSingleProduct = asyncHandler(async (req, res) => {
@@ -21,10 +20,10 @@ const getSingleProduct = asyncHandler(async (req, res) => {
         res.status(200).json(product)
     }
     catch (err) {
-        res.status(500)
-        throw new Error(err.message)
+        // res.status(500)
+        // throw new Error(err.message)
         // console.log(err.message);
-        // res.status(500).json({ msg: err.message })
+        res.status(500).json({ msg: err.message })
     }
 
 })
@@ -38,7 +37,9 @@ const createProduct = asyncHandler(async (req, res) => {
     }
     catch (err) {
         res.status(500)
-        throw new Error(err.message)
+        // throw new Error(err.message)
+        res.status(500).json({ msg: err.message })
+
     }
 })
 
@@ -57,7 +58,9 @@ const editProduct = asyncHandler(async (req, res) => {
     }
     catch (err) {
         res.status(500)
-        throw new Error(err.message)
+        // throw new Error(err.message)
+        res.status(500).json({ msg: err.message })
+
     }
 
 })
@@ -77,7 +80,9 @@ const deleteProduct = asyncHandler(async (req, res) => {
     }
     catch (err) {
         res.status(500)
-        throw new Error(err.message)
+        // throw new Error(err.message)
+        res.status(500).json({ msg: err.message })
+
     }
 
 })

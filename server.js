@@ -29,10 +29,10 @@ mongoose.connect(process.env.DB)
         console.log(`DB not connect Error`, err);
     })
 
-app.get('/', (req, res) => {
-    throw new Error('Fake Error')
-    res.send('hello node api')
-})
+// app.get('/', (req, res) => {
+//     throw new Error('Fake Error')
+//     res.send('hello node api')
+// })
 
 
 app.use(errorMiddleware)
